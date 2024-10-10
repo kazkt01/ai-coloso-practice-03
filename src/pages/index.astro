@@ -1,0 +1,241 @@
+---
+import { getLocaleAbsoluteUrl } from 'astro/i18n';
+import Button from '../components/Button.astro';
+import Layout from '../layouts/Layout.astro';
+
+---
+
+<Layout title="Ai Coloso">
+	<main>
+    <div
+        class="flex min-h-[calc(120wh-(32px+theme(spacing.gutter-y)*2))] flex-col px-gutter-x "
+     >
+    <h1 class=" js-type-shuflle text-[max(5vw,4rem)] font-bold leading-none text-white invisible"
+        date-max-cell-itterations="10">
+      Powering Your Business with AI
+     </h1>
+     <p class=" js-type-shuflle mt-gutter-y-0.5 min-w-[calc((100%-theme(spacing.gutter-x))/2)] max-w-[36em] text-lg invisible"
+        date-max-cell-itterations="15">
+      AI Coloso. is a startup that uses cutting-edge artificial intelligence technology to
+      help businesses of all sizes streamline their operations and boost their bottom line.
+     </p>
+     <figure class=" relative mt-gutter-y grow min-h-[20rem] ">
+      <img
+      class="size-full object-cover absolute"
+      src="/images/hero.jpg"
+      alt=""
+      width="1920"
+      height="940"
+      decoding="async"
+       />
+     </figure>
+     </div>
+     <section class="px-gutter-x pb-gutter-y pt-gutter-y-2">
+      <h2 class=" js-type-shufulle text-[max(4vw,3.2rem)] font-bold leading-[1,125] text-white">
+       Our Mission</h2>
+      <div class="min-w-[calc((100%-theme(spacing.gutter-x)0/2)] ml-auto max-w-xl ">
+      <p class=" js-type-shuflle mt-gutter-y ">
+        At AI Coloso., our mission is to make AI accessible and affordable for businesses of
+        all sizes. We believe that AI has the power to transform the way businesses operate,
+        and we're committed to helping our customers harness that power to achieve their goals.
+        Whether you're a small startup or a large enterprise, we're here to help you take advantage
+        of the latest AI technology and stay ahead of the competition.
+      </p>
+      <Button className="mt-gutter-y" href='/mission/'>Learn More</Button>
+      </div>
+
+      <div class="-mx-gutter-x mt-gutter-y overflow-hidden "
+      >
+      <div class="w-fit animate-[marquee_100s_linear_infinite] whitespace-nowrap text-[max(8vw,6.4rem)]
+      font-bold leading-none text-neutral-800"
+      aria-hidden="true">
+        Make AI Accessible and Affordable for Businesses of All Sizes.&nbsp;Make AI
+        Accessible and Affordable for Businesses of All Sizes.&nbsp;
+      </div>
+      </div>
+     </section>
+     <section class="border-t border-t-neutral-500 px-gutter-x py-gutter-y-2">
+      <h2 class="js-type-shuflle">Our Products</h2>
+      <div class="lg:grid lg:grid-cols-2 lg:gap-x-gutter-x ">
+        <ul class="mt-gutter-y grid grid-cols-3 gap-gutter-x lg:order-2 ">
+          {
+            [
+              {
+              name: 'Ai Assistant',
+              slug: 'ai-assistant',
+            },
+                        {
+              name: 'Ai Analyrtics',
+              slug: 'ai-analytics',
+            },
+                        {
+              name: 'Ai Chatbots',
+              slug: 'ai-chatbots',
+            },
+          ].map(({ name , slug }) => {
+              return (
+          <li>
+            <a href={`/products/${slug}/`} class="group">
+              <figure class="grid aspect-square place-items-center border border-neutral-500 transition-colors duration-100 ease-out group-hover:border-green-500">
+                <img src={`/public/images/icon-${slug}.svg`}
+                alt=""
+                width="200"
+                height="200"
+                decoding="async"
+                class="size-full">
+              </figure>
+              <h3 class="mt-gutter-y-0.5 text-lg font-medium text-white js-type-shuflle">{name}</h3>
+            </a>
+          </li>
+              )
+            })
+          }
+        </ul>
+      <div>
+      <p class="mt-gutter-y min-w-[calc((100%-theme(spacing.gutter-x)*2)/3*2+theme(spacing.gutter-x))] max-w-[30rem] js-type-shuflle ">
+        At AI Coloso., we offer a range of AI-powered products designed to help businesses achieve their goals.
+        Our flagship product, AI Assistant, can help you automate routine tasks like data entry and appointment
+        scheduling, freeing up your team to focus on more strategic initiatives. We also offer AI-powered analytics tools,
+        chatbots, and virtual assistants to help you streamline your operations and engage with customers more effectively.
+      </p>
+      <Button className="mt-gutter-y" href="/products/">Lern More</Button>
+      </div>
+      </div>
+     </section>
+     <section class="border-t border-t-neutral-500 px-gutter-x py-gutter-y-2 ">
+      <h2 class="js-type-shuflle"> Our Teams </h2>
+      <ul class=" mt-gutter-y grid grid-cols-3 gap-x-gutter-x gap-y-gutter-y lg:grid-cols-6  ">
+        {
+          [
+            {
+              name: 'Jhon Doe',
+              slug:'jhon-doe',
+              title:'CEO',
+            },
+            {
+              name:'Sarah Johnson',
+              slug:'sarah-johnson',
+              title:'Sales Manager',
+            },
+            {
+              name:'Micheal Smith',
+              slug:'michael-smith',
+              title:'Lead developer',
+            },
+            {
+              name:'Daivid Kim',
+              slug:'david-kim',
+              title:'Data Scientist',
+
+            },
+        ].map(({ name , slug, title}) => {
+          return (
+            <li>
+              <figure class="aspect-square">
+                <img
+                  src={`/images/profile-${slug}.jpg`}
+                  alt={`${name}'s photo`}
+                  width="440"
+                  height="440"
+                  decoding="async"
+                  class="size-full"
+                  />
+              </figure>
+              <h3 class="mt-gutter-y-0.5 font-medium text-white js-type-shuflle">{name}</h3>
+              <p class="text-neutral-500 js-type-shufulle">{title}</p>
+            </li>
+          );
+        })
+        }
+        <li>
+          <a href="/careers/" class="group">
+          <figure class="aspect-square border border-neutral-500 transition-colors duration-100 ease-out group-hover:border-green-500">
+            <img src="/images/icon-plus.svg"
+            width="200"
+            height="200"
+            decoding="async"
+            alt=""
+            class="size-full"
+            />
+          </figure>
+          <p class=" mt-gutter-y-0.5 font-medium text-whit js-type-shuflle">Join Us</p>
+          </a>
+        </li>
+      </ul>
+      <p class="min-w-[calc((100%-theme(spacing.gutter-x)0/2)] mt-gutter-x max-w-xl js-type-shuflle">
+        Our team of AI experts has years of experience building and deploying
+        cutting-edge AI solutions for businesses across a range of industries.
+        Led by our CEO, Dr. Jane Doe, our team is dedicated to staying on the
+        cutting edge of AI technology and using our expertise to help businesses l
+        ike yours succeed.
+      </p>
+     </section>
+     <section class="border-t border-t-neutral-500 px-gutter-x py-gutter-y-2">
+      <h2 class="js-type-shuflle">News</h2>
+      <ul class="mt-gutter-y border-t border-t-neutral-500">
+      {
+        [
+          {
+          date:'April 1, 2023 ',
+          category:'Technology',
+          title:'AIgenius Launches Revolutionary AI-Powered Chatbot Platform',
+          id: 5,
+          },
+          {
+          date:'June 15, 2023 ',
+          category:'Research',
+          title:'Brainwave AI Unveils Groundbreaking New AI Language Model',
+          id: 4,
+          },
+          {
+          date:'September 7, 2023 ',
+          category:'Business',
+          title:'Cognitive Ventures Raises $50 Million in Series B Funding Round',
+          id: 3,
+          },
+          {
+          date:'November 22, 2023 ',
+          category:'Innovation',
+          title:'DeepMind Technologies Develops Breakthrough AI System for Medical Diagnosis',
+          id: 2,
+          },
+                    {
+          date:'January 12, 2024 ',
+          category:'Industry',
+          title:'NeuralNet Innovations Collaborates with Fortune 500 Company to Deploy AI Solutions NeuralNet Innovations Collaborates with Fortune 500 Company to Deploy AI Solutions',
+          id: 1,
+          },
+        ].map(({ date , category , title ,  id  }) => {
+          return (
+            <li class="border-b border-b-neutral-500 js-type-shuflle">
+              <a href={`/news/${id}/`}
+              class="group  grid  gap-x-gutter-x gap-y-2 py-gutter-y-0.5 md:grid-cols-6">
+                <div class=" grid grid-cols-2 gap-x-gutter-x text-neutral-500 md:col-span-2 ">
+                  <p>{date}</p>
+                  <p>{category}</p>
+                </div>
+                <h3 class="font-medium transition-colors duration-100 ease-out group-hover:text-green-500 md:col-span-4 ">{title}</h3>
+              </a>
+            </li>
+            );
+          })
+        }
+      </ul>
+            <Button className="mt-gutter-y" href="/products/">View All</Button>
+     </section>
+  </main>
+</Layout>
+
+
+<style>
+  h2{
+    @apply text-[max(4vw,3.2rem)] font-bold leading-[1,125] text-white;
+  }
+</style>
+
+
+
+
+
+
+

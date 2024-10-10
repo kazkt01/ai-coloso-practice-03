@@ -1,0 +1,212 @@
+---
+
+import Header from '../components/Header.astro'
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=400" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-black font-roboto-mono leading-normal text-neutral-300">
+    <Header/>
+		<slot />
+      <footer
+        class="border-t border-t-neutral-500 px-gutter-x pb-gutter-y-0.5 pt-gutter-y-2 "
+      >
+      <div class="grid gap-x-gutter-x gap-y-gutter-y lg:grid-cols-6">
+      <a href="/" class="self-start justify-self-start lg:col-span-2">
+        <img
+          src="/images/logo.svg"
+          alt="Ai Coloso."
+          width="104"
+          height="32"
+          decoding="async"
+          />
+      </a>
+      <nav class="lg:col-span-4" aria-label="Footer menu">
+        <ul class="grid grid-cols-2 gap-x-gutter-x md:grid-cols-4 ">
+          {
+          [
+            {
+            label:'News',
+            href:'/news/',
+            className:'row-span-4',
+          children: [
+              {
+                label:'Technology',
+                href:'/news/technology/',
+              },
+              {
+                label:'Research',
+                href:'/news/research/',
+              },
+              {
+                label:'Business',
+                href:'/news/business/',
+              },
+              {
+                label:'Innovation',
+                href:'/news/innovation/',
+              },
+              {
+                label:'Industry',
+                href:'/news/industr/',
+              },
+            ],
+          },
+          {
+            label:'Products',
+            href:'/product/',
+            className:'row-span-4',
+          children: [
+              {
+                label:'Ai Assistant',
+                href:'/products/ai-assistant/',
+              },
+              {
+                label:'AI Analytics',
+                href:'/products/ai-analytics/',
+              },
+              {
+                label:'AI Chatbots',
+                href:'/products/ai-chatbots/',
+              },
+            ],
+          },
+          {
+          label:'About Us',
+          href:'/about/',
+          className: 'row-span-4 mt-gutter-y md:mt-0  ',
+          children: [
+              {
+                label:'Our Mission',
+                href:'/about/mission/',
+              },
+              {
+                label:'Our Team',
+                href:'/about/team/',
+              },
+              {
+                label:'Company Information',
+                href:'/about/intformation/',
+              },
+            ],
+          },
+          {
+          label:'Careers',
+          href:'/careers/',
+          className:'mt-gutter-y md:mt-0'
+          },
+                    {
+          label:'Terms & Policy',
+          href:'/polycy/',
+          className:'col-start-2 md:col-start-4'
+          },
+                    {
+          label:'Privacy Policy',
+          href:'/Provacy/',
+          className:'col-start-2 md:col-start-4'
+          },
+        ].map(({ label , href , children , className}) => {
+            return (
+              <li class={className}>
+                <a class="inline-block py-[0.3125rem] font-medium transition-colors duration-100 ease-out hover:text-green-500 js-type-shufulle "
+                   href={href}>{label}</a>
+                {children
+                &&
+                <ul>
+                  { children.map(({ label, href }) => {
+                    return(
+                  <li>
+                    <a  class="inline-block py-[0.3125rem] text-neutral-500  transition-colors duration-100 ease-out hover:text-green-500 js-type-shufulle"
+                        href={href}
+                        >
+                          {label}
+                          </a>
+                      </li>
+                    );
+                })}
+                </ul>
+                }
+              </li>
+            );
+          })
+         }
+        </ul>
+      </nav>
+      </div>
+      <a href="/contact/"class="mt-gutter-y flex flex-wrap
+      justify-center gap-x-gutter-x whitespace-nowrap text-[16vw]
+      font-medium leading-none tracking-[-0.03em] text-white
+      transition-colors duration-100 ease-out
+      hover:text-green-500 lg:flex-nowrap lg:text-[8vw] js-type-shuflle"
+      >Contact Us
+      <span aria-hidden="true">---------&gt;</span>
+      </a>
+      <div class="-mx-gutter-x mt-gutter-y overflow-hidden">
+        <p class="flex w-fit animate-[marquee_3750ms_linear_infinite] gap-x-[0.5em] text-[max(1vw,1rem)]  [--translate-x:-10%]"
+        >
+        {
+        [...Array(10)].map((_,i) => {
+          return <span class="mr-[0.5em] whitespace-nowrap" aria-hidden={i !== 0 }>© 2023 Ai Coloso.</span>
+        })
+        }
+      </p>
+      </div>
+     </footer>
+	</body>
+
+</html>
+<style is:global></style>
+
+<script>
+
+  import { TypeShuffle } from "../scripts/typeShuflle";
+
+    const textElements = document.querySelectorAll('.js-type-shuflle');
+
+    textElements.forEach((textElement) => {
+    const ts = new TypeShuffle(textElement);
+
+        const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting){
+          entry.target.classList.remove('invisible');
+          const maxCellItterations = parseInt(
+            entry.target.getAttribute('date-max-cell-iterations') || '5'
+          );
+      ts.trigger('fx6', maxCellItterations);
+      observer.unobserve(entry.target);
+        }
+      });
+    },{
+      rootMargin: '0px 0px -10% 0px',
+    });
+    observer.observe(textElement);
+    });
+</script>
+
+
+
+
+
+
+
+
